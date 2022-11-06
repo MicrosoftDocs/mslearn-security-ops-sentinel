@@ -47,7 +47,7 @@
                     "immediatePurgeDataOn30Days": true
                 },
                 "sku": {
-                    "name": "Free"
+                    "name": "PerGB2018"
                 }
             }
         },
