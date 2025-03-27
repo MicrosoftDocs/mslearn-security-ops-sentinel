@@ -50,7 +50,16 @@
                     "name": "PerGB2018"
                 }
             }
-        },
+        },{
+            "type": "Microsoft.SecurityInsights/onboardingStates",
+            "apiVersion": "2025-03-01",
+            "name": "default",
+            "dependsOn": [
+                "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]"
+            ],
+            "properties": {},
+            "scope": "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+        },        
         {
             "type": "Microsoft.OperationsManagement/solutions",
             "apiVersion": "2015-11-01-preview",
