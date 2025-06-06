@@ -15,7 +15,7 @@
             "type": "String"
         },
         "simplevmWindowsOSVersion": {
-            "defaultValue": "2016-Datacenter",
+            "defaultValue": "2022-Datacenter",
             "type": "String"
         }
     },
@@ -30,7 +30,7 @@
         "simplevmImagePublisher": "MicrosoftWindowsServer",
         "simplevmImageOffer": "WindowsServer",
         "simplevmOSDiskName": "simplevmOSDisk",
-        "simplevmVmSize": "Standard_D1_v2",
+        "simplevmVmSize": "Standard_B2as_v2",
         "simplevmVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'vnet1')]",
         "simplevmSubnetRef": "[concat(variables('simplevmVnetID'), '/subnets/', variables('vnet1Subnet1Name'))]",
         "simplevmStorageAccountContainerName": "vhds",
