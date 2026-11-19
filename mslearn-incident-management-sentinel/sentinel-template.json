@@ -112,16 +112,18 @@
         },
         {
             "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2015-06-15",
+            "apiVersion": "2023-05-01",
             "name": "[variables('st1Name')]",
             "location": "[resourceGroup().location]",
             "dependsOn": [],
             "tags": {
                 "displayName": "st1"
             },
-            "properties": {
-                "accountType": "[variables('st1Type')]"
-            }
+            "sku": {
+                "name": "[variables('st1Type')]"
+            },
+            "kind": "StorageV2",
+            "properties": {}
         },
         {
             "type": "Microsoft.Network/networkInterfaces",
@@ -150,7 +152,7 @@
         },
         {
             "type": "Microsoft.Compute/virtualMachines",
-            "apiVersion": "2015-06-15",
+            "apiVersion": "2023-09-01",
             "name": "[parameters('simplevmName')]",
             "location": "[resourceGroup().location]",
             "dependsOn": [
@@ -178,11 +180,11 @@
                     },
                     "osDisk": {
                         "name": "simplevmOSDisk",
-                        "vhd": {
-                            "uri": "[concat('http://', variables('st1Name'), '.blob.core.windows.net/', variables('simplevmStorageAccountContainerName'), '/', variables('simplevmOSDiskName'), '.vhd')]"
-                        },
                         "caching": "ReadWrite",
-                        "createOption": "FromImage"
+                        "createOption": "FromImage",
+                        "managedDisk": {
+                            "storageAccountType": "StandardSSD_LRS"
+                        }
                     }
                 },
                 "networkProfile": {
